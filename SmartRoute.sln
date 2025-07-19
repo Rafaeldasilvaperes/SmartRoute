@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.API", "SmartRoute.API\SmartRoute.API.csproj", "{08ECB8A1-119E-4842-B5EE-BEC4669EDF5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.Application", "SmartRoute.Application\SmartRoute.Application.csproj", "{7A7AFD0D-1709-47E4-B8BA-F48B8FD526B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.Domain", "SmartRoute.Domain\SmartRoute.Domain.csproj", "{021BAF24-B670-4907-8268-DE4D01AF1469}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.Infrastructure", "SmartRoute.Infrastructure\SmartRoute.Infrastructure.csproj", "{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08ECB8A1-119E-4842-B5EE-BEC4669EDF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08ECB8A1-119E-4842-B5EE-BEC4669EDF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08ECB8A1-119E-4842-B5EE-BEC4669EDF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08ECB8A1-119E-4842-B5EE-BEC4669EDF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7AFD0D-1709-47E4-B8BA-F48B8FD526B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7AFD0D-1709-47E4-B8BA-F48B8FD526B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7AFD0D-1709-47E4-B8BA-F48B8FD526B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7AFD0D-1709-47E4-B8BA-F48B8FD526B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{021BAF24-B670-4907-8268-DE4D01AF1469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{021BAF24-B670-4907-8268-DE4D01AF1469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{021BAF24-B670-4907-8268-DE4D01AF1469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{021BAF24-B670-4907-8268-DE4D01AF1469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
