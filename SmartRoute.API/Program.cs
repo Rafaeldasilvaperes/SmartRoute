@@ -1,17 +1,30 @@
 using SmartRoute.Application.Interfaces;
 using SmartRoute.Application.Services;
+using Microsoft.EntityFrameworkCore;
+using SmartRoute.Infrastructure.Persistence;
+using SmartRoute.Infrastructure.DependencyInjection;
+using MediatR;
+using SmartRoute.Application.Features.Routes.Queries.GetAllRoutes;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddMediatRServices();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IDeliveryRouteService, DeliveryRouteService>();
+builder.Services.AddInfrastructureServices();
 
+// Adiciona o contexto com uma ConnectionString
+builder.Services.AddDbContext<SmartRouteDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

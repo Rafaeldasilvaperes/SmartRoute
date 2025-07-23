@@ -22,5 +22,6 @@ namespace SmartRoute.API.Controllers
             var result = _service.CreateRoute(dto);
             return Ok(result);
         }
+
     }
 }
