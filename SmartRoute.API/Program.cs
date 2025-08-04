@@ -3,8 +3,6 @@ using SmartRoute.Application.Services;
 using Microsoft.EntityFrameworkCore;
 using SmartRoute.Infrastructure.Persistence;
 using SmartRoute.Infrastructure.DependencyInjection;
-using MediatR;
-using SmartRoute.Application.Features.Routes.Queries.GetAllRoutes;
 
 
 var builder = WebApplication.CreateBuilder(args);

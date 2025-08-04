@@ -1,11 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using SmartRoute.Application.Features.Routes.Queries.GetAllRoutes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmartRoute.Application.Features.Routes.Queries.GetAllDeliveryRoutes;
+
 
 namespace SmartRoute.Infrastructure.DependencyInjection
 {
@@ -13,7 +9,7 @@ namespace SmartRoute.Infrastructure.DependencyInjection
     {
         public static IServiceCollection AddMediatRServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetAllRoutesQueryHandler>());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetAllDeliveryRoutesQueryHandler>());
 
             return services;
         }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartRoute.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using SmartRoute.Infrastructure.Persistence;
 namespace SmartRoute.Infrastructure.Migrations
 {
     [DbContext(typeof(SmartRouteDbContext))]
-    partial class SmartRouteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250804000153_AddCountyIdentifier")]
+    partial class AddCountyIdentifier
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace SmartRoute.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SmartRoute.Domain.Entities.DeliveryRoute", b =>
+            modelBuilder.Entity("SmartRoute.Domain.Entities.Route", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +53,7 @@ namespace SmartRoute.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeliveryRoute");
+                    b.ToTable("Routes");
                 });
 #pragma warning restore 612, 618
         }

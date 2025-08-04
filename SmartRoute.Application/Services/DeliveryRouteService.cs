@@ -1,4 +1,5 @@
-﻿using SmartRoute.Application.DTOs;
+﻿using SmartRoute.Application.Common.Interfaces.Persistence;
+using SmartRoute.Application.DTOs;
 using SmartRoute.Application.Interfaces;
 using SmartRoute.Domain.Entities;
 using System;
@@ -11,12 +12,20 @@ namespace SmartRoute.Application.Services
 {
     public class DeliveryRouteService : IDeliveryRouteService
     {
+
+        public DeliveryRouteService()
+        {
+           
+        }
+
         public DeliveryRoute CreateRoute(DeliveryRouteDto dto)
         {
             return new DeliveryRoute
             {
                 Origin = dto.Origin,
-                Destination = dto.Destination
+                OriginIbgeCode = dto.OriginIbgeCode,
+                Destination = dto.Destination,                
+                DestinationIbgeCode = dto.DestinationIbgeCode
             };
         }
     }

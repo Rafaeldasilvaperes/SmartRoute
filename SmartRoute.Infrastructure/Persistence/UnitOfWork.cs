@@ -9,13 +9,13 @@ namespace SmartRoute.Infrastructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly SmartRouteDbContext _context;
-        public IRouteRepository RouteRepository { get; }
+        private  SmartRouteDbContext _context;       
+        public IDeliveryRouteRepository DeliveryRouteRepository { get; }
 
-        public UnitOfWork(SmartRouteDbContext context, IRouteRepository routeRepository)
+        public UnitOfWork(SmartRouteDbContext context, IDeliveryRouteRepository deliveryRouteRepository)
         {
-            _context = context;
-            RouteRepository = routeRepository;
+            _context = context;           
+            DeliveryRouteRepository = deliveryRouteRepository;
         }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

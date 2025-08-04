@@ -14,13 +14,13 @@ namespace SmartRoute.Infrastructure.Persistence
         public SmartRouteDbContext(DbContextOptions<SmartRouteDbContext> options)
         : base(options) { }
 
-        public DbSet<Route> Routes { get; set; }
+        public DbSet<DeliveryRoute> DeliveryRoute { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Route>(entity =>
+            modelBuilder.Entity<DeliveryRoute>(entity =>
             {
                 entity.HasKey(r => r.Id);
                 entity.Property(r => r.Id)
