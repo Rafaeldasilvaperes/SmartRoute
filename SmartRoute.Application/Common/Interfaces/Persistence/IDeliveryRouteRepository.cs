@@ -1,4 +1,5 @@
-﻿using SmartRoute.Domain.Entities;
+﻿using SmartRoute.Application.DTOs;
+using SmartRoute.Domain.Entities;
 
 
 namespace SmartRoute.Application.Common.Interfaces.Persistence
@@ -7,7 +8,7 @@ namespace SmartRoute.Application.Common.Interfaces.Persistence
     {        
         Task<List<DeliveryRoute>> GetDeliveryRoutesByDate(DateTime data);
         Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCode(string ibgeCode);
-
-
+        Task<DeliveryRoute> AddDeliveryRoute(DeliveryRoute deliveryRouteItem);
+        Task<DeliveryRoute> GetDeliveryRoute(DeliveryRouteDto deliveryRoute);
     }
 }

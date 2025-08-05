@@ -12,21 +12,26 @@ namespace SmartRoute.Application.Services
 {
     public class DeliveryRouteService : IDeliveryRouteService
     {
+        private readonly IDeliveryRouteRepository _repositoryDeliveryRoute;
 
-        public DeliveryRouteService()
+        public DeliveryRouteService(IDeliveryRouteRepository repositoryDeliveryRoute)
         {
-           
+            _repositoryDeliveryRoute = repositoryDeliveryRoute;
         }
 
-        public DeliveryRoute CreateRoute(DeliveryRouteDto dto)
-        {
-            return new DeliveryRoute
+        public async Task<DeliveryRoute> CreateRoute(DeliveryRouteDto dto)
+        {           
+            var newDeliveryRoute = new DeliveryRoute
             {
                 Origin = dto.Origin,
                 OriginIbgeCode = dto.OriginIbgeCode,
-                Destination = dto.Destination,                
+                Destination = dto.Destination,
                 DestinationIbgeCode = dto.DestinationIbgeCode
             };
+
+            await _repositoryDeliveryRoute.AddAsync(newDeliveryRoute);
+
+            return newDeliveryRoute;                   
         }
     }
 }

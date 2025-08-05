@@ -15,18 +15,19 @@ namespace SmartRoute.Application.Features.Routes.Queries.GetAllDeliveryRoutes
             _unitOfWork = unitOfWork;
         }
 
-        //public async Task<List<RouteResult>> Handle(GetAllRoutesQuery request, CancellationToken cancellationToken)
-        //{
-        //    IEnumerable<Route> routes = await _unitOfWork.RouteRepository.GetAllAsync(cancellationToken);
-        //    return routes.Select(r => new RouteResult(r.Id, r.Origin, r.OriginIbgeCode, r.Destination, r.DestinationIbgeCode)).ToList();
-        //}
-
         public async Task<List<DeliveryRouteResult>> Handle(GetAllDeliveryRoutesQuery request, CancellationToken cancellationToken)
         {
-            IEnumerable<DeliveryRoute> routes = await _unitOfWork.DeliveryRouteRepository.GetAllAsync(cancellationToken);
-            return routes.Select(r => new DeliveryRouteResult(r.Id, r.Origin, r.OriginIbgeCode, r.Destination, r.DestinationIbgeCode)).ToList();
-        }
+            try
+            {
+                IEnumerable<DeliveryRoute> routes = await _unitOfWork.DeliveryRouteRepository.GetAllAsync(cancellationToken);
 
-
+                return routes.Select(r => new DeliveryRouteResult(r.Id, r.Origin, r.OriginIbgeCode, r.Destination, r.DestinationIbgeCode)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Something went wrong while trying to get your Delivery Routes. Try again later!");
+            }
+            
+        }        
     }
 }

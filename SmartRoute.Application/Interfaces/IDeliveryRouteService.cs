@@ -5,6 +5,6 @@ namespace SmartRoute.Application.Interfaces
 {
     public interface IDeliveryRouteService
     {
-        DeliveryRoute CreateRoute(DeliveryRouteDto dto);
+        Task<DeliveryRoute> CreateRoute(DeliveryRouteDto dto);
     }
 }
