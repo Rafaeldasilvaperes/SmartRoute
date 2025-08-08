@@ -19,7 +19,7 @@ namespace SmartRoute.Application.Features.Routes.Queries.GetOneDeliveryRoute
         {
             try
             {
-                var routes = await _unitOfWork.DeliveryRouteRepository.GetDeliveryRoute(request.dto);
+                var routes = await _unitOfWork.DeliveryRouteRepository.GetDeliveryRouteAsync(request.dto);
 
                 var teste = new DeliveryRouteResult(routes.Id, routes.Origin, routes.OriginIbgeCode, routes.Destination, routes.DestinationIbgeCode);
 

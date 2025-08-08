@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using SmartRoute.Application.Common.Interfaces.Persistence;
+using SmartRoute.Application.Features.Routes.Common;
 using SmartRoute.Domain.Entities;
 
 
 namespace SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute
 {
-    public class CreateDeliveryRouteHandler : IRequestHandler<CreateDeliveryRouteCommand, DeliveryRoute>
+    public class CreateDeliveryRouteHandler : IRequestHandler<CreateDeliveryRouteCommand, DeliveryRouteResult>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -14,7 +15,7 @@ namespace SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<DeliveryRoute> Handle(CreateDeliveryRouteCommand request, CancellationToken cancellation)
+        public async Task<DeliveryRouteResult> Handle(CreateDeliveryRouteCommand request, CancellationToken cancellation)
         {
             var entity = new DeliveryRoute
             {
@@ -27,7 +28,13 @@ namespace SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute
             await _unitOfWork.DeliveryRouteRepository.AddAsync(entity);            
             await _unitOfWork.SaveChangesAsync();
 
-            return entity;
+
+            return new DeliveryRouteResult(
+                            entity.Id,
+                            entity.Origin,
+                            entity.OriginIbgeCode,
+                            entity.Destination,
+                            entity.DestinationIbgeCode);
         }
     }
 }

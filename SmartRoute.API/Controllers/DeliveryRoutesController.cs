@@ -4,6 +4,7 @@ using SmartRoute.Application.DTOs;
 using SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute;
 using SmartRoute.Application.Features.Routes.Common;
 using SmartRoute.Application.Features.Routes.Queries.GetAllDeliveryRoutes;
+using SmartRoute.Application.Features.Routes.Queries.GetDeliveryRouteById;
 using SmartRoute.Application.Features.Routes.Queries.GetOneDeliveryRoute;
 using SmartRoute.Application.Interfaces;
 using SmartRoute.Domain.Entities;
@@ -37,22 +38,33 @@ namespace SmartRoute.API.Controllers
             
         }
 
-        [HttpPost]
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<DeliveryRouteResult>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _mediator.Send(new GetDeliveryRouteByIdCommand(id));
+                return Ok(result);
+            }
+            catch (KeyNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        [HttpPost]        
         public async Task<ActionResult<DeliveryRouteResult>> Create([FromBody] DeliveryRouteDto dto)
         {
             try
             {
-                Task<DeliveryRoute> result = _mediator.Send(new CreateDeliveryRouteCommand(dto));
+                var createdEntity = await _mediator.Send(new CreateDeliveryRouteCommand(dto));                               
 
-                var entityAdded = await _mediator.Send(new GetOneDeliveryRouteCommand(dto));
-
-                return Ok(entityAdded);
+                return CreatedAtAction(nameof(GetAll), new { id = createdEntity.Id }, createdEntity);
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);   
+                return BadRequest(e.Message);
             }
-            
-        }  
+        }
     }
 }

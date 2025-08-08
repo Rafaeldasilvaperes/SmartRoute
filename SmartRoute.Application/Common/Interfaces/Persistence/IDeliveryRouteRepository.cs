@@ -5,10 +5,9 @@ using SmartRoute.Domain.Entities;
 namespace SmartRoute.Application.Common.Interfaces.Persistence
 {
     public interface IDeliveryRouteRepository : IRepository<DeliveryRoute>
-    {        
-        Task<List<DeliveryRoute>> GetDeliveryRoutesByDate(DateTime data);
-        Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCode(string ibgeCode);
-        Task<DeliveryRoute> AddDeliveryRoute(DeliveryRoute deliveryRouteItem);
-        Task<DeliveryRoute> GetDeliveryRoute(DeliveryRouteDto deliveryRoute);
+    {      
+        Task<DeliveryRoute?> GetDeliveryRouteAsync(DeliveryRouteDto deliveryRoute);
+        Task<List<DeliveryRoute>> GetDeliveryRoutesByDateAsync(DateTime data);
+        Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCodeAsync(string ibgeCode);            
     }
 }
