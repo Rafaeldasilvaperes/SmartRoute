@@ -38,21 +38,39 @@ namespace SmartRoute.Infrastructure.Persistence.Repositories
             }
         }
 
-        public async Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCodeAsync(string ibgeCode)
+        public async Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCodeAsync(string ibgeCodeOrigin)
         {
             try
             {
                 return await _dbSet
-                    .Where(route => route.OriginIbgeCode == ibgeCode)
+                    .Where(route => route.OriginIbgeCode == ibgeCodeOrigin)
                     .ToListAsync();
             }
             catch (Exception e)
             {
                 throw new Exception(
-                    $"Something went wrong while trying to get your Delivery Routes by Origin IBGE Code ({ibgeCode}). " +
+                    $"Something went wrong while trying to get your Delivery Routes by Origin IBGE Code ({ibgeCodeOrigin}). " +
                     $"Error Message: {e.Message}", e
                 );
             }
-        }        
+        } 
+        
+        public async Task<List<DeliveryRoute>> GetDeliveryRoutesByDestinationIbgeCodeAsync(string ibgeCodeDestination)
+        {
+            try
+            {
+                return await _dbSet
+                    .Where(route => route.DestinationIbgeCode == ibgeCodeDestination)
+                    .ToListAsync();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(
+                    $"Something went wrong while trying to get your Delivery Routes by Destination IBGE Code ({ibgeCodeDestination}). " +
+                    $"Error Message: {e.Message}", e
+                );
+            }
+        }
     }
 }

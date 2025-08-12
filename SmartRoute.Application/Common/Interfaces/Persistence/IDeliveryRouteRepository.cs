@@ -8,6 +8,7 @@ namespace SmartRoute.Application.Common.Interfaces.Persistence
     {      
         Task<DeliveryRoute?> GetDeliveryRouteAsync(DeliveryRouteDto deliveryRoute);
         Task<List<DeliveryRoute>> GetDeliveryRoutesByDateAsync(DateTime data);
-        Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCodeAsync(string ibgeCode);            
+        Task<List<DeliveryRoute>> GetDeliveryRoutesByOriginIbgeCodeAsync(string ibgeCodeOrigin);
+        Task<List<DeliveryRoute>> GetDeliveryRoutesByDestinationIbgeCodeAsync(string ibgeCodeDestination);
     }
 }
