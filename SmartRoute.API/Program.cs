@@ -3,15 +3,13 @@ using SmartRoute.Application.Services;
 using Microsoft.EntityFrameworkCore;
 using SmartRoute.Infrastructure.Persistence;
 using SmartRoute.Infrastructure.DependencyInjection;
+using SmartRoute.API.Middlewares;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddMediatRServices();
-
-
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,6 +30,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Middleware for controller exceptions
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

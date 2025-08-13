@@ -106,7 +106,7 @@ namespace SmartRoute.API.Controllers
             
         }
 
-        [HttpPost]        
+        [HttpPost("CreateNewDeliveryRoute")]        
         public async Task<ActionResult<DeliveryRouteResult>> CreateNewDeliveryRoute([FromBody] DeliveryRouteDto dto)
         {
             try
