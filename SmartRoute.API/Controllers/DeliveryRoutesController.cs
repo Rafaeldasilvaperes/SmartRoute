@@ -21,11 +21,13 @@ namespace SmartRoute.API.Controllers
     public class DeliveryRoutesController : ControllerBase
     {        
         private readonly IMediator _mediator;
+        private readonly ILogger<DeliveryRoutesController> _logger;
 
-        public DeliveryRoutesController(IMediator mediator)
+        public DeliveryRoutesController(IMediator mediator, ILogger<DeliveryRoutesController> logger)
         {
             
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -39,7 +41,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);   
+                _logger.LogError(e, "Error at GetAll DeliveryRoutes");
+                return BadRequest("Something went wrong while trying to GetAll Delivery Routes!");   
             }
             
         }
@@ -55,7 +58,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (KeyNotFoundException e)
             {
-                return NotFound(e.Message);
+                _logger.LogError(e, "Error at GetById DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Get Delivery Route by Id");
             }
         }
 
@@ -70,7 +74,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at GetByDate DeliveryRoutes");
+                return BadRequest("Something went wrong while trying to Get Delivery Routes by Date");
             }
             
         }
@@ -86,7 +91,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at GetByOriginIbgeCode DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Get Delivery Route by Origin Ibge Code");
             }
             
         }
@@ -101,7 +107,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at GetByDestinationIbgeCode DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Get Delivery Route by Destination IBGE Code");
             }
             
         }
@@ -117,7 +124,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at CreateNewDeliveryRoute DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Create New Delivery Route");
             }
         }
 
@@ -132,12 +140,13 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at UpdateDeliveryRoute DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Update the Delivery Route");
             }
         }
 
         [HttpPatch("{id:guid}")]
-        public async Task<ActionResult<DeliveryRouteResult>> Patch(Guid id, [FromBody] DeliveryRouteDto dto)
+        public async Task<ActionResult<DeliveryRouteResult>> PatchDeliveryRoute(Guid id, [FromBody] DeliveryRouteDto dto)
         {
             try
             {
@@ -147,7 +156,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at PatchDeliveryRoute DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Update Partially the Delivery Route");
             }
             
         }
@@ -166,7 +176,8 @@ namespace SmartRoute.API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                _logger.LogError(e, "Error at DeleteDeliveryRoute DeliveryRoutes");
+                return NotFound("Something went wrong while trying to Delete the Delivery Route");
             }
         }
     }
