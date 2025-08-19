@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.Domain", "SmartR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.Infrastructure", "SmartRoute.Infrastructure\SmartRoute.Infrastructure.csproj", "{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartRoute.Tests", "SmartRoute.Tests\SmartRoute.Tests.csproj", "{75B72A5D-E341-4E52-B2DE-747F443D4FD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19FE2411-412A-4E40-9EB3-D898A6C2B6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B72A5D-E341-4E52-B2DE-747F443D4FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B72A5D-E341-4E52-B2DE-747F443D4FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B72A5D-E341-4E52-B2DE-747F443D4FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B72A5D-E341-4E52-B2DE-747F443D4FD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
