@@ -29,7 +29,7 @@ namespace SmartRoute.Tests.tests.SmartRoute.InfrastructureTests.Repositories
             using var context = CreateDbContext();
             var repository = new DeliveryRouteRepository(context);
 
-            var route = new DeliveryRoute { Id = Guid.NewGuid(), Origin = "Rota Teste" };
+            var route = new DeliveryRoute { Id = Guid.NewGuid(), OriginAddress = "Rota Teste", DestinationAddress = "1234567" };
 
             // Act
             await repository.AddAsync(route);
@@ -38,7 +38,7 @@ namespace SmartRoute.Tests.tests.SmartRoute.InfrastructureTests.Repositories
             // Assert
             var saved = await context.DeliveryRoute.FirstOrDefaultAsync(r => r.Id == route.Id);
             Assert.NotNull(saved);
-            Assert.Equal("Rota Teste", saved!.Origin);
+            Assert.Equal("Rota Teste", saved!.OriginAddress);
         }
     }
 }

@@ -2,11 +2,6 @@
 using SmartRoute.Application.Common.Interfaces.Persistence;
 using SmartRoute.Application.Features.Routes.Common;
 using SmartRoute.Application.Features.Routes.Queries.GetDeliveryRouteById;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmartRoute.Application.Features.Routes.Queries.GetByIdDeliveryRoute
 {
@@ -28,10 +23,9 @@ namespace SmartRoute.Application.Features.Routes.Queries.GetByIdDeliveryRoute
 
             return new DeliveryRouteResult(
                 entity.Id,
-                entity.Origin,
-                entity.OriginIbgeCode,
-                entity.Destination,
-                entity.DestinationIbgeCode
+                entity.OriginAddress,
+                entity.DestinationAddress,
+                entity.CreatedAt
             );
         }
     }

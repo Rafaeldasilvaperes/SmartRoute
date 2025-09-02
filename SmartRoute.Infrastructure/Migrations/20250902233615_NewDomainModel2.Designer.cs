@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartRoute.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using SmartRoute.Infrastructure.Persistence;
 namespace SmartRoute.Infrastructure.Migrations
 {
     [DbContext(typeof(SmartRouteDbContext))]
-    partial class SmartRouteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250902233615_NewDomainModel2")]
+    partial class NewDomainModel2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

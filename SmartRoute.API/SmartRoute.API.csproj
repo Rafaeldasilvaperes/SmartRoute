@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SmartRoute.Application\SmartRoute.Application.csproj" />
-    <ProjectReference Include="..\SmartRoute.Infrastructure\SmartRoute.Infrastructure.csproj" />
+    <ProjectReference Include="..\SmartRoute.Infrastructure\SmartRoute.Infrastructure.csproj" />	
   </ItemGroup>
 
 </Project>

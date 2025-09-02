@@ -4,8 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using SmartRoute.Application.Common.Interfaces.Persistence;
 using SmartRoute.Application.DTOs;
 using SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute;
+using SmartRoute.Application.Interfaces;
 using SmartRoute.Infrastructure.Persistence;
 using SmartRoute.Infrastructure.Persistence.Repositories;
+using SmartRoute.Infrastructure.Services;
 
 namespace SmartRoute.Infrastructure.DependencyInjection;
 
@@ -20,6 +22,8 @@ public static class InfrastructureServiceRegistration
         services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
         services.AddValidatorsFromAssemblyContaining<DeliveryRouteDtoValidator>();
+
+        services.AddScoped<IGeocodingService, MockGeocodingService>();
 
 
         //services.AddControllers()

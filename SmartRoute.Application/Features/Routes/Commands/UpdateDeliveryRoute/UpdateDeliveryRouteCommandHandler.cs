@@ -25,10 +25,13 @@ namespace SmartRoute.Application.Features.Routes.Commands.UpdateDeliveryRoute
             if (existing == null)
                 throw new Exception($"DeliveryRoute with ID {request.Id} not found.");
 
-            existing.Origin = request.dto.Origin;
-            existing.OriginIbgeCode = request.dto.OriginIbgeCode;
-            existing.Destination = request.dto.Destination;
-            existing.DestinationIbgeCode = request.dto.DestinationIbgeCode;
+            existing.OriginAddress = request.dr.OriginAddress;
+            existing.OriginLatitude = request.dr.OriginLatitude;
+            existing.OriginLongitude = request.dr.OriginLongitude;
+            existing.DestinationAddress = request.dr.DestinationAddress;
+            existing.DestinationLatitude = request.dr.DestinationLatitude;
+            existing.DestinationLongitude = request.dr.DestinationLongitude;
+            existing.CreatedAt = request.dr.CreatedAt;
 
             _unitOfWork.DeliveryRouteRepository.Update(existing);
 
@@ -36,10 +39,9 @@ namespace SmartRoute.Application.Features.Routes.Commands.UpdateDeliveryRoute
 
             return new DeliveryRouteResult(
                 existing.Id,
-                existing.Origin,
-                existing.OriginIbgeCode,
-                existing.Destination,
-                existing.DestinationIbgeCode
+                existing.OriginAddress,
+                existing.DestinationAddress,
+                existing.CreatedAt                
             );
         }
     }

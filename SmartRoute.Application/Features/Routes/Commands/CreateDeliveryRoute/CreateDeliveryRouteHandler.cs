@@ -19,11 +19,15 @@ namespace SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute
         {
             var entity = new DeliveryRoute
             {
-                Origin = request.dto.Origin,
-                OriginIbgeCode = request.dto.OriginIbgeCode,
-                Destination = request.dto.Destination,
-                DestinationIbgeCode = request.dto.DestinationIbgeCode
-            };
+                OriginAddress = request.dr.OriginAddress,
+                OriginLatitude = request.dr.OriginLatitude,
+                OriginLongitude = request.dr.OriginLongitude,
+                DestinationAddress = request.dr.DestinationAddress,
+                DestinationLatitude = request.dr.DestinationLatitude,
+                DestinationLongitude = request.dr.DestinationLongitude,
+                CreatedAt = request.dr.CreatedAt
+
+            };          
 
             await _unitOfWork.DeliveryRouteRepository.AddAsync(entity);            
             await _unitOfWork.SaveChangesAsync();
@@ -31,10 +35,9 @@ namespace SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute
 
             return new DeliveryRouteResult(
                             entity.Id,
-                            entity.Origin,
-                            entity.OriginIbgeCode,
-                            entity.Destination,
-                            entity.DestinationIbgeCode);
+                            entity.OriginAddress,                            
+                            entity.DestinationAddress,                           
+                            entity.CreatedAt);
         }
     }
 }

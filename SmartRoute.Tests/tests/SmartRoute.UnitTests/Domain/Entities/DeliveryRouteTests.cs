@@ -14,10 +14,10 @@ namespace SmartRoute.Tests.tests.SmartRoute.UnitTests.Domain.Entities
         public void CreateRoute_ShouldSetPropertiesCorrectly()
         {
             // Arrange
-            var deliveryRoute = new DeliveryRoute();
+            var deliveryRoute = new DeliveryRoute { Id = Guid.NewGuid(), OriginAddress = "Rota Teste", DestinationAddress = "1234567" };
 
             // Act & Assert
-            Assert.Equal("São Paulo", deliveryRoute.Origin);
+            Assert.Equal("Rota Teste", deliveryRoute.OriginAddress);
             Assert.NotEqual(Guid.Empty, deliveryRoute.Id);
         }
     }

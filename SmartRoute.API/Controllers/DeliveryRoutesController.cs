@@ -7,11 +7,8 @@ using SmartRoute.Application.Features.Routes.Commands.PartialUpdateDeliveryRoute
 using SmartRoute.Application.Features.Routes.Commands.UpdateDeliveryRoute;
 using SmartRoute.Application.Features.Routes.Common;
 using SmartRoute.Application.Features.Routes.Queries.GetAllDeliveryRoutes;
-using SmartRoute.Application.Features.Routes.Queries.GetDeliveryRouteByIbgeCode;
 using SmartRoute.Application.Features.Routes.Queries.GetDeliveryRouteById;
 using SmartRoute.Application.Features.Routes.Queries.GetDeliveryRoutesByDate;
-using SmartRoute.Application.Features.Routes.Queries.GetOneDeliveryRoute;
-using SmartRoute.Application.Interfaces;
 using SmartRoute.Domain.Entities;
 
 namespace SmartRoute.API.Controllers
@@ -78,47 +75,14 @@ namespace SmartRoute.API.Controllers
                 return BadRequest("Something went wrong while trying to Get Delivery Routes by Date");
             }
             
-        }
-
-        [HttpGet("by-origin/{ibgeCode}")]
-        public async Task<ActionResult<List<DeliveryRouteResult>>> GetByOriginIbgeCode(string ibgeCode)
-        {
-            try
-            {
-                var result = await _mediator.Send(new GetDeliveryRoutesByOriginIbgeCodeCommand(ibgeCode));
-
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "Error at GetByOriginIbgeCode DeliveryRoutes");
-                return NotFound("Something went wrong while trying to Get Delivery Route by Origin Ibge Code");
-            }
-            
-        }
-        [HttpGet("by-destination/{ibgeCode}")]
-        public async Task<ActionResult<List<DeliveryRouteResult>>> GetByDestinationIbgeCode(string ibgeCode)
-        {
-            try
-            {
-                var result = await _mediator.Send(new GetDeliveryRoutesByDestinationIbgeCodeCommand(ibgeCode));
-
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "Error at GetByDestinationIbgeCode DeliveryRoutes");
-                return NotFound("Something went wrong while trying to Get Delivery Route by Destination IBGE Code");
-            }
-            
-        }
+        }        
 
         [HttpPost("CreateNewDeliveryRoute")]        
-        public async Task<ActionResult<DeliveryRouteResult>> CreateNewDeliveryRoute([FromBody] DeliveryRouteDto dto)
+        public async Task<ActionResult<DeliveryRouteResult>> CreateNewDeliveryRoute([FromBody] DeliveryRoute deliveryRoute)
         {
             try
             {
-                var createdEntity = await _mediator.Send(new CreateDeliveryRouteCommand(dto));                               
+                var createdEntity = await _mediator.Send(new CreateDeliveryRouteCommand(deliveryRoute));                               
 
                 return CreatedAtAction(nameof(GetAll), new { id = createdEntity.Id }, createdEntity);
             }
@@ -130,11 +94,11 @@ namespace SmartRoute.API.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult<DeliveryRouteResult>> UpdateDeliveryRoute(Guid id, [FromBody] DeliveryRouteDto dto)
+        public async Task<ActionResult<DeliveryRouteResult>> UpdateDeliveryRoute(Guid id, [FromBody] DeliveryRoute deliveryRoute)
         {
             try
             {
-                var updatedDeliveryRoute = await _mediator.Send(new UpdateDeliveryRouteCommand(id, dto));
+                var updatedDeliveryRoute = await _mediator.Send(new UpdateDeliveryRouteCommand(id, deliveryRoute));
 
                 return Ok(updatedDeliveryRoute);
             }

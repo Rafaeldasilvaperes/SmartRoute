@@ -1,5 +1,3 @@
-using SmartRoute.Application.Interfaces;
-using SmartRoute.Application.Services;
 using Microsoft.EntityFrameworkCore;
 using SmartRoute.Infrastructure.Persistence;
 using SmartRoute.Infrastructure.DependencyInjection;
@@ -67,3 +65,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -22,7 +22,7 @@ namespace SmartRoute.Application.Features.Routes.Queries.GetDeliveryRoutesByDate
         {
             var list = await _unitOfWork.DeliveryRouteRepository.GetDeliveryRoutesByDateAsync(request.Date);
 
-            return list.Select(r => new DeliveryRouteResult(r.Id, r.Origin, r.OriginIbgeCode, r.Destination, r.DestinationIbgeCode))
+            return list.Select(r => new DeliveryRouteResult(r.Id, r.OriginAddress, r.DestinationAddress, r.CreatedAt))
                        .ToList();
         }
     }

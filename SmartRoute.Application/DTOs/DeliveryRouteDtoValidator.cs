@@ -11,19 +11,14 @@ namespace SmartRoute.Application.DTOs
     {
         public DeliveryRouteDtoValidator()
         {
-            RuleFor(x => x.OriginIbgeCode)
+            RuleFor(x => x.OriginAddress)
                 .NotEmpty().WithMessage("Origin IBGE code is required.")
                 .Length(7).WithMessage("IBGE code must have exactly 7 digits.");
 
-            RuleFor(x => x.DestinationIbgeCode)
+            RuleFor(x => x.DestinationAddress)
                 .NotEmpty().WithMessage("Destination IBGE code is required.")
-                .Length(7).WithMessage("IBGE code must have exactly 7 digits.");
-
-            RuleFor(x => x.Origin)
-                .NotEmpty().WithMessage("Origin is required.");
-
-            RuleFor(x => x.Destination)
-                .NotEmpty().WithMessage("Destination is required.");
+                .Length(7).WithMessage("IBGE code must have exactly 7 digits.");          
+            
         }
     }
 }

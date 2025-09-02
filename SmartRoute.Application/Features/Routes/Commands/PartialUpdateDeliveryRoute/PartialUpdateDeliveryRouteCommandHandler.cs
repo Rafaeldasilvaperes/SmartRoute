@@ -47,10 +47,9 @@ namespace SmartRoute.Application.Features.Routes.Commands.PartialUpdateDeliveryR
 
             return new DeliveryRouteResult(
                 existing.Id,
-                existing.Origin,
-                existing.OriginIbgeCode,
-                existing.Destination,
-                existing.DestinationIbgeCode
+                existing.OriginAddress,
+                existing.DestinationAddress,
+                existing.CreatedAt
             );
         }
     }

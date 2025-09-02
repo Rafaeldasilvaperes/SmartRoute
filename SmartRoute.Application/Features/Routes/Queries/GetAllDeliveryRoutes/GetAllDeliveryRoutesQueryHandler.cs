@@ -21,7 +21,7 @@ namespace SmartRoute.Application.Features.Routes.Queries.GetAllDeliveryRoutes
             {
                 IEnumerable<DeliveryRoute> routes = await _unitOfWork.DeliveryRouteRepository.GetAllAsync(cancellationToken);
 
-                return routes.Select(r => new DeliveryRouteResult(r.Id, r.Origin, r.OriginIbgeCode, r.Destination, r.DestinationIbgeCode)).ToList();
+                return routes.Select(r => new DeliveryRouteResult(r.Id, r.OriginAddress, r.DestinationAddress, r.CreatedAt)).ToList();
             }
             catch (Exception e)
             {

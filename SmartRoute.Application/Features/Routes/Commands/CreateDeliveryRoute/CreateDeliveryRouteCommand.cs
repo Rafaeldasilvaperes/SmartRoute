@@ -5,4 +5,4 @@ using SmartRoute.Domain.Entities;
 
 namespace SmartRoute.Application.Features.Routes.Commands.CreateDeliveryRoute;
 
-public record CreateDeliveryRouteCommand(DeliveryRouteDto dto) : IRequest<DeliveryRouteResult>;
+public record CreateDeliveryRouteCommand(DeliveryRoute dr) : IRequest<DeliveryRouteResult>;
